@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:warner_bros/cargando_screen.dart';
+
+
+void main() => runApp(const WarnerBros());
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -20,12 +24,12 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // ScrollController para controlar el desplazamiento
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   bool _isAtBottom = false;
 
   @override
@@ -34,14 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
     _scrollController.addListener(_scrollListener);
   }
 
-  // Listener para detectar el desplazamiento
   void _scrollListener() {
     setState(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
-        _isAtBottom = true; // Ha llegado al final
+        _isAtBottom = true;
       } else {
-        _isAtBottom = false; // No ha llegado al final
+        _isAtBottom = false;
       }
     });
   }
@@ -78,7 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(Icons.notifications, color: Colors.white),
+                      icon:
+                          const Icon(Icons.notifications, color: Colors.white),
                       onPressed: () {},
                     ),
                   ],
@@ -86,7 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          Container(
+          Container
+          (
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20),
@@ -103,7 +108,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const HomeScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()),
                       );
                     },
                   ),
@@ -116,7 +122,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const HomeScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()),
                       );
                     },
                   ),
@@ -128,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Stack(
               children: [
                 SingleChildScrollView(
-                  controller: _scrollController, // Asocia el controller aquí
+                  controller: _scrollController,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -140,8 +147,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           children: [
-                            tarjeta(context, 'Atracciones', 'assets/atracciones.jpg'),
-                            tarjeta(context, 'Restaurantes', 'assets/restaurantes.jpg'),
+                            tarjeta(context, 'Atracciones',
+                                'assets/atracciones.jpg'),
+                            tarjeta(context, 'Restaurantes',
+                                'assets/restaurantes.jpg'),
                           ],
                         ),
                         SizedBox(
@@ -158,7 +167,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(height: 20),
                         const Text(
                           'Más opciones',
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 10),
                         optionItem(Icons.store, 'Tienda'),
@@ -168,14 +178,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                // Flecha que aparece cuando no estamos al final
                 if (!_isAtBottom)
                   Positioned(
                     bottom: 1,
                     left: MediaQuery.of(context).size.width / 2 - 20,
                     child: GestureDetector(
                       onTap: () {
-                        _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+                        _scrollController
+                            .jumpTo(_scrollController.position.maxScrollExtent);
                       },
                       child: const Icon(
                         Icons.arrow_drop_down_rounded,
@@ -256,7 +266,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
-              // Capa del gradiente
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -266,7 +275,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              // Título superpuesto
               Positioned(
                 top: 10,
                 left: 10,
