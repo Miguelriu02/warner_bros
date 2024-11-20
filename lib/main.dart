@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:warner_bros/cargando_screen.dart';
 
@@ -60,11 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 82, 28, 53),
+      backgroundColor: Colors.lightBlue,
       body: Column(
         children: [
           Container(
-            color: const Color.fromARGB(255, 82, 28, 53),
+            color: Colors.lightBlue,
             height: 150,
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
