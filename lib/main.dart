@@ -1,6 +1,7 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:warner_bros/cargando_screen.dart';
-
 
 void main() => runApp(const WarnerBros());
 
@@ -59,10 +60,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 82, 28, 53),
       body: Column(
         children: [
           Container(
-            color: Colors.black,
+            color: const Color.fromARGB(255, 82, 28, 53),
             height: 150,
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
@@ -90,9 +92,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          Container
-          (
+          Container(
+            padding:
+                const EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 15),
             decoration: const BoxDecoration(
+              color: Colors.white,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
@@ -136,45 +140,55 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 SingleChildScrollView(
                   controller: _scrollController,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 10),
-                        GridView.count(
-                          crossAxisCount: 2,
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          children: [
-                            tarjeta(context, 'Atracciones',
-                                'assets/atracciones.jpg'),
-                            tarjeta(context, 'Restaurantes',
-                                'assets/restaurantes.jpg'),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 175,
-                          child: GridView.count(
-                            crossAxisCount: 1,
+                  child: Container(
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 10),
+                          GridView.count(
+                            crossAxisCount: 2,
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             children: [
-                              tarjeta(context, 'Mapa', 'assets/mapa.jpg'),
+                              tarjeta(context, 'Atracciones',
+                                  'assets/atracciones.jpg'),
+                              tarjeta(context, 'Restaurantes',
+                                  'assets/restaurantes.jpg'),
                             ],
                           ),
-                        ),
-                        const SizedBox(height: 20),
-                        const Text(
-                          'Más opciones',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 10),
-                        optionItem(Icons.store, 'Tienda'),
-                        optionItem(Icons.directions, 'Cómo llegar'),
-                        optionItem(Icons.info, 'Información'),
-                      ],
+                          SizedBox(
+                            height: 175,
+                            child: GridView.count(
+                              crossAxisCount: 1,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              children: [
+                                tarjeta(context, 'Mapa', 'assets/mapa.jpg'),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          const Text(
+                            'Más opciones',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 10),
+                          optionItem(Icons.store, 'Tienda'),
+                          optionItem(Icons.directions, 'Cómo llegar'),
+                          optionItem(Icons.info, 'Información'),
+                          optionItem(Icons.access_alarm, 'Alerta'),
+                          optionItem(Icons.airline_seat_flat, 'More Options'),
+                          optionItem(
+                              Icons.airline_seat_individual_suite_outlined,
+                              'Hoteles Cercanos'),
+                          optionItem(
+                              Icons.attach_money_rounded, 'Comprar entrada')
+                        ],
+                      ),
                     ),
                   ),
                 ),
