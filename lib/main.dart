@@ -179,7 +179,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           optionItem(Icons.directions, 'Cómo llegar'),
                           optionItem(Icons.info, 'Información'),
                           optionItem(Icons.access_alarm, 'Alerta'),
-                          optionItem(Icons.airline_seat_flat, 'More Options'),
                           optionItem(
                               Icons.airline_seat_individual_suite_outlined,
                               'Hoteles Cercanos'),
